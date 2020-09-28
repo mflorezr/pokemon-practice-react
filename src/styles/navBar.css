@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root{
+  --navbar-color: #F8F9F9;
+  --brand-color: #000000;
+  --search-font-color:#8685858a;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+ 
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navbar-color);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  color: var(--brand-color);
+  margin: 1rem;
+  font-weight: 400;
+}
+
+.nav-item {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brand-color);
+}
+
+.search-box {
+  width: 12rem;
+  height: 2.5rem;
+  margin: 0.5rem 1rem;
+  padding: 1rem; 
+  border: 1px solid #cecfcfd0;
+  border-radius: 0.3rem;
+  outline: none;
+}
+
+.search-box:focus {
+  box-shadow: 0 0 2px 3px #86c5f0; 
+}
+
+.search-box::placeholder {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@media (min-width:0px) and (max-width:576px){
+  .nav-item {
+    font-size: 0.7rem;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+    
+  }
+  .search-box {
+    width: 7rem;
+    margin: 0.5rem ;
+  
+  }
+  .search-box::placeholder {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+}
