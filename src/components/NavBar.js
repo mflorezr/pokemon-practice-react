@@ -1,29 +1,26 @@
-import React from 'react'
+import React, { useEffect}  from 'react'
+import '../styles/main.css'
 import '../styles/navBar.css'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { lookFor } from '../redux/actions/lookForActions'
 
 const NavBar = (props) => {
-
+  
   const lookFor= React.useRef()
+
+  useEffect(() => {
+    if (!props.pokemonList.isFetching) {
+      props.lookFor(props.pokemonList.pokemons)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.pokemonList.isFetching]);
 
   const handleInput = () => {
     const currentValue = lookFor.current.value.toLowerCase()
     const results = props.pokemonList.pokemons
       .filter(pokemon => pokemon.name.startsWith(currentValue))
-      .map(pokemon => (
-        pokemon = pokemon.url.substring(34, pokemon.url.length - 1)
-      ))
-    const allCards = document.getElementsByClassName('pokemon-card')
-    Array.from(allCards).forEach(card => {
-      if (results.includes(card.id)) {
-        if (card.classList.contains('hide-card')) {
-          card.classList.remove('hide-card')
-        }
-      } else {
-        card.classList.add('hide-card')
-      }
-    })
+    props.lookFor(results)
   }
   
   return(
@@ -47,6 +44,12 @@ const NavBar = (props) => {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    lookFor: (pokemonResults) => dispatch(lookFor(pokemonResults))
+  }
+}
+
 export default connect((state) => {
   return state
-})(NavBar)
+}, mapDispatchToProps)(NavBar)

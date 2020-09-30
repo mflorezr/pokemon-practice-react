@@ -1,9 +1,3 @@
-:root{
-  --backdrop-bg: #00000080;
-  --welcome-color: #ffffff;
-  --button-font-color: #fec204;
-}
-
 .home {
   background: url('../images/image1.jpg') center/cover no-repeat;
   width: 100vw;
@@ -15,11 +9,11 @@
   width: 30rem;
 }
 
-.pokemon-title-image{
+.pokemon-title-image {
   width: 100%;
 }
 
-.pokemon-title-image:hover{
+.pokemon-title-image:hover {
   animation: wiggle 400ms 3s 8 ease-out;
 }
 
@@ -58,7 +52,7 @@
 }
 
 .welcome {
-  color: var(--welcome-color) ;
+  color: var(--modal-bg) ;
   font-size: 2rem;
   font-weight: 800;
   text-align: center;
@@ -66,7 +60,7 @@
 }
 
 .welcome-description {
-  color: var(--welcome-color) ;
+  color: var(--modal-bg) ;
   font-size: 1rem;
   font-weight: 500;
   padding: 2rem;
@@ -77,10 +71,10 @@
   width: 15rem;
   height: 3rem;
   background-color: transparent;
-  border: 1px solid var(--welcome-color);
+  border: 1px solid var(--modal-bg);
   border-radius: 2rem;
   font-size: 1rem;
-  color: var(--welcome-color);
+  color: var(--modal-bg);
   cursor: pointer;
   outline: none;
   font-weight: 800;
@@ -88,7 +82,7 @@
 }
 
 .goto-pokemons:hover {
-  background:var(--welcome-color);
+  background:var(--modal-bg);
   color: var(--button-font-color) ;
   border: 1px solid  var(--button-font-color)
 }

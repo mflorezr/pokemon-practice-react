@@ -5,15 +5,15 @@ import { fetchPokemons } from '../redux/actions/pokemonListAction'
 import { fetchFeatures, fetchOthers } from '../redux/actions/pokemonFeaturesActions'
 import { updatePokemon} from '../redux/actions/modalActions'
 import { compareTo } from '../redux/actions/comparisonActions'
-import { activeModal, closeComparisonCard } from '../Util'
+import '../styles/main.css'
 import '../styles/pokemonList.css'
-
 
 const PokemonList = (props) =>{  
   let srcImage = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
   const [isScrolled, setIsScrolled] = useState(false);
   const [id, setId] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
+  const [pokemonToShow, setPokemonToShow] = useState([]);
 
   useEffect(() => {
     props.fetchPokemons(20)
@@ -24,7 +24,11 @@ const PokemonList = (props) =>{
   }, []);
 
   useEffect(() => {
-		if (isScrolled){
+    setPokemonToShow(props.pokemonResults)
+  }, [props.pokemonResults]);
+
+  useEffect(() => {
+    if (isScrolled) {
       const listSize=props.pokemonList.pokemons.length
       props.fetchPokemons(listSize+20)
       setIsScrolled(false)
@@ -32,41 +36,33 @@ const PokemonList = (props) =>{
   }, [isScrolled]);
   
   useEffect(() => {
-    if(!props.pokemonFeatures.isFetching && !props.pokemonFeatures.isOtherFetching && isClicked){
+    if (!props.pokemonFeatures.isFetching && !props.pokemonFeatures.isOtherFetching && isClicked) {
       actionToDo(id)
       setIsClicked(false)
     }
 	}, [props.pokemonFeatures.isFetching, props.pokemonFeatures.isOtherFetching]);
 
   const scrollHandler = () => {
-    if(Math.ceil(window.innerHeight + document.documentElement.scrollTop) === document.documentElement.offsetHeight){
+    if (Math.ceil(window.innerHeight + document.documentElement.scrollTop) === document.documentElement.offsetHeight) {
       setIsScrolled(true)
     }
   }
 
-  const isVisible = () => {
-    const comparisonCard = document.getElementsByClassName('comparison-card')[0]
-    return comparisonCard.classList.contains('open-comparison')
-  }
-
   const actionToDo = (cardId) =>{
     const pokemonSelected = props.pokemonFeatures.features.filter(pokemon => parseInt(pokemon.id)===parseInt(cardId))[0]
-    if(isVisible()){
+    if (props.comparison.length === 1) {
       props.compareTo(pokemonSelected)
-      activeModal(1)
-      closeComparisonCard()
-    } else{
+    } else {
       props.updatePokemon(pokemonSelected)
-      activeModal(0)
     } 
   }
 
-  const pokemonClickHandler = (e) => {
-    const pokemonId = e.currentTarget.id
+  const pokemonClickHandler = (event) => {
+    const pokemonId = event.currentTarget.id
     setId(pokemonId)
     setIsClicked(true)
-    let pokemonExists = props.pokemonFeatures.features.filter(pokemon => parseInt(pokemonId)===parseInt(pokemon.id))
-    if(pokemonExists.length === 0) { 
+    let pokemonExists = props.pokemonFeatures.features.filter(pokemon => parseInt(pokemonId) === parseInt(pokemon.id))
+    if (pokemonExists.length === 0) { 
       props.fetchFeatures(props.pokemonList.pokemons[pokemonId-1].url)
       props.fetchOthers(pokemonId)
     } else {
@@ -76,8 +72,8 @@ const PokemonList = (props) =>{
 
   return(
     <div className = 'pokemon-list' onScroll={scrollHandler}>
-      {props.pokemonList.pokemons.map((pokemon, index) => (
-        <div id={index+1} className='pokemon-card' key={pokemon.url} onClick={pokemonClickHandler}>
+      {pokemonToShow.map((pokemon) => (
+        <div id={pokemon.url.substring(34, pokemon.url.length - 1)} className='pokemon-card' key={pokemon.url} onClick={pokemonClickHandler}>
           <div className='pokemon-image-container'>
             <img className='pokemon-image' 
               src = { 

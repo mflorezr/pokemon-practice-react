@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/main.css'
 import '../styles/home.css'
 import title from '../images/title.png'
 import { Link } from 'react-router-dom'

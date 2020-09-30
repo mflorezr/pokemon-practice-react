@@ -1,13 +1,4 @@
-:root{
-  --border-color: #cecfcfd0;
-  --backdrop-bg: #00000080;
-  --modal-bg: #ffffff;
-  --button-compare-bg: #6c757d;
-  --mobile-font-size: 0.7rem;
-  --desktop-font-size: 0.9rem;
-}
-
-.container{
+.container {
   display: flex;
   justify-content: center;
 }
@@ -139,22 +130,22 @@
   align-items: center;
 }
 
-.modal-comparison-images{
+.modal-comparison-images {
   display: flex;
   margin: 0 2rem;
   column-gap: 5rem;
   border-bottom:1px solid var(--border-color) ;
 }
 
-.comparison-image-container{
+.comparison-image-container {
   width: 10rem;
 }
 
-.comparison-image{
+.comparison-image {
   width: 100%;
 }
 
-.comparison-features{
+.comparison-features {
   display: flex;
   justify-content: center;
   column-gap: 5rem;
@@ -164,18 +155,18 @@
   border-bottom:1px solid var(--border-color) ;
 }
 
-.comparison-feature-name{
+.comparison-feature-name {
   font-size: var(--desktop-font-size);
   font-weight: 600;
   padding: 0.2rem 0;
 }
 
-.comparison-feature-value{
+.comparison-feature-value {
   font-size: var(--desktop-font-size);
   padding: 0.2rem 0;
 }
 
-.modal-chart-mixed{
+.modal-chart-mixed {
   position: relative;
   width: auto;
   height: auto;
@@ -227,32 +218,31 @@
     font-size: var(--mobile-font-size) ;
   }
   
-  .modal-comparison-images{
+  .modal-comparison-images {
     margin: 0 1rem;
     column-gap: 2.5rem;
     justify-content: center;
   }
   
-  .comparison-image-container{
+  .comparison-image-container {
     width: 8rem;
     margin: 0;
   }
   
-  .comparison-features{
+  .comparison-features {
     column-gap: 3rem;
     margin: 0 2rem;
   }
   
-  .comparison-feature-name{
+  .comparison-feature-name {
     font-size: var(--mobile-font-size);
   }
   
-  .comparison-feature-value{
+  .comparison-feature-value { 
     font-size: var(--mobile-font-size);
   }
   
-  .modal-chart-mixed{
+  .modal-chart-mixed {
     width: auto;  
   }
-
 }
