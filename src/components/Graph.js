@@ -21,7 +21,6 @@ const Graph = (props) => {
         createGraph(ctx, stats)
       }
     }
-  
   }, [props.currentPokemon, props.comparison]);
 
   const createGraph = (ctx, stats) => {

@@ -2,7 +2,7 @@ import { FETCH_POKEMONS_ERROR, FETCH_POKEMONS_SUCCESS, FETCH_POKEMONS_REQUEST } 
 
 const initialState = {
   pokemons: [],
-  isFetching: false,
+  isFetching: true,
   error: null
 }
 

@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect} from 'react'
+
+import React, { useState, useEffect, useCallback} from 'react'
 import { connect } from 'react-redux'
 import { fetchPokemons } from '../redux/actions/pokemonListAction'
 import { fetchFeatures, fetchOthers } from '../redux/actions/pokemonFeaturesActions'
@@ -14,33 +14,53 @@ const PokemonList = (props) =>{
   const [id, setId] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   const [pokemonToShow, setPokemonToShow] = useState([]);
+  const {
+    fetchPokemons, 
+    pokemonFeatures,
+    compareTo, 
+    updatePokemon, 
+    pokemonList,
+    comparison,
+    fetchFeatures,
+    fetchOthers,
+    pokemonResults
+  } = props
 
   useEffect(() => {
-    props.fetchPokemons(20)
+    fetchPokemons(20)
     window.addEventListener('scroll', scrollHandler);
     return () => {
       window.removeEventListener( 'scroll', scrollHandler)
     }
-  }, []);
+  }, [fetchPokemons]);
 
   useEffect(() => {
-    setPokemonToShow(props.pokemonResults)
-  }, [props.pokemonResults]);
+    setPokemonToShow(pokemonResults)
+  }, [pokemonResults]);
 
   useEffect(() => {
     if (isScrolled) {
-      const listSize=props.pokemonList.pokemons.length
-      props.fetchPokemons(listSize+20)
+      const listSize = pokemonList.pokemons.length
+      fetchPokemons(listSize+20)
       setIsScrolled(false)
     }
-  }, [isScrolled]);
+  }, [fetchPokemons, isScrolled, pokemonList.pokemons]);
+  
+  const actionToDo = useCallback((cardId) => {
+    const pokemonSelected = pokemonFeatures.features.filter(pokemon => parseInt(pokemon.id)===parseInt(cardId))[0]
+    if (comparison.length === 1) {
+      compareTo(pokemonSelected)
+    } else {
+      updatePokemon(pokemonSelected)
+    } 
+  },[compareTo, updatePokemon, comparison.length, pokemonFeatures.features])
   
   useEffect(() => {
-    if (!props.pokemonFeatures.isFetching && !props.pokemonFeatures.isOtherFetching && isClicked) {
+    if (!pokemonFeatures.isFetching && !pokemonFeatures.isOtherFetching && isClicked) {
       actionToDo(id)
       setIsClicked(false)
     }
-	}, [props.pokemonFeatures.isFetching, props.pokemonFeatures.isOtherFetching]);
+	}, [pokemonFeatures.isFetching, pokemonFeatures.isOtherFetching, isClicked, id, actionToDo]);
 
   const scrollHandler = () => {
     if (Math.ceil(window.innerHeight + document.documentElement.scrollTop) === document.documentElement.offsetHeight) {
@@ -48,23 +68,14 @@ const PokemonList = (props) =>{
     }
   }
 
-  const actionToDo = (cardId) =>{
-    const pokemonSelected = props.pokemonFeatures.features.filter(pokemon => parseInt(pokemon.id)===parseInt(cardId))[0]
-    if (props.comparison.length === 1) {
-      props.compareTo(pokemonSelected)
-    } else {
-      props.updatePokemon(pokemonSelected)
-    } 
-  }
-
   const pokemonClickHandler = (event) => {
     const pokemonId = event.currentTarget.id
     setId(pokemonId)
-    setIsClicked(true)
-    let pokemonExists = props.pokemonFeatures.features.filter(pokemon => parseInt(pokemonId) === parseInt(pokemon.id))
+    let pokemonExists = pokemonFeatures.features.filter(pokemon => parseInt(pokemonId) === parseInt(pokemon.id))
     if (pokemonExists.length === 0) { 
-      props.fetchFeatures(props.pokemonList.pokemons[pokemonId-1].url)
-      props.fetchOthers(pokemonId)
+      fetchFeatures(pokemonList.pokemons[pokemonId-1].url)
+      fetchOthers(pokemonId)
+      setIsClicked(true)
     } else {
       actionToDo(pokemonId)
     }

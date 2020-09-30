@@ -21,8 +21,7 @@ const ComparisonFeatures = (props) => {
           getGender(pokemon.gender_rate)
         )))
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.comparison]);
+  }, [props.comparison, props.pokemonFeatures]);
 
   return(
       <div className= 'comparison-features'>

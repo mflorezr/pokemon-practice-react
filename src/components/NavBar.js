@@ -7,20 +7,20 @@ import { lookFor } from '../redux/actions/lookForActions'
 
 const NavBar = (props) => {
   
-  const lookFor= React.useRef()
+  const inputWord= React.useRef()
+  const {lookFor, pokemonList} = props
 
   useEffect(() => {
-    if (!props.pokemonList.isFetching) {
-      props.lookFor(props.pokemonList.pokemons)
+    if (!pokemonList.isFetching) {
+     lookFor(pokemonList.pokemons)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.pokemonList.isFetching]);
+  }, [pokemonList.isFetching, lookFor, pokemonList.pokemons]);
 
   const handleInput = () => {
-    const currentValue = lookFor.current.value.toLowerCase()
-    const results = props.pokemonList.pokemons
+    const currentValue = inputWord.current.value.toLowerCase()
+    const results = pokemonList.pokemons
       .filter(pokemon => pokemon.name.startsWith(currentValue))
-    props.lookFor(results)
+    lookFor(results)
   }
   
   return(
@@ -38,7 +38,7 @@ const NavBar = (props) => {
         </Link>
       </div>
       <div>
-       <input className='search-box' type="search" placeholder="Search" autoComplete='on' ref={lookFor} onChange={handleInput}/>
+       <input className='search-box' type="search" placeholder="Search" autoComplete='on' ref={inputWord} onChange={handleInput}/>
       </div>
     </div>
     )
