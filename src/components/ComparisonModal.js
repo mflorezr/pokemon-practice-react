@@ -5,6 +5,7 @@ import '../styles/modal.css';
 import ComparisonCard from './ComparisonCard'
 import Graph from './Graph';
 import { restartComparison } from '../redux/actions/comparisonActions'
+import { restartPokemon } from '../redux/actions/modalActions'
 import ComparisonFeatures from './ComparisonFeatures';
 
 const ComparisonModal = (props) => {
@@ -19,6 +20,7 @@ const ComparisonModal = (props) => {
   const closeHandler = () => {
     setOpenModal(false)
     props.restartComparison()
+    props.restartPokemon()
   }
 
   return(
@@ -61,7 +63,8 @@ const ComparisonModal = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    restartComparison: () => dispatch(restartComparison())
+    restartComparison: () => dispatch(restartComparison()),
+    restartPokemon: () => dispatch(restartPokemon())
   }
 }
 
