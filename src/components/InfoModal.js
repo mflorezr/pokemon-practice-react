@@ -18,7 +18,7 @@ const InfoModal = (props) =>{
 
   const compareToHandler = (event) => {
     const current = event.currentTarget.id
-    const id=current.substring(current.indexOf('-')+1)
+    const id=current.substring(current.indexOf('_')+1)
     props.compareTo(props.pokemonFeatures.features.filter(pokemon => parseInt(pokemon.id)===parseInt(id))[0])
     setOpenModal(false)
   }
@@ -39,7 +39,7 @@ const InfoModal = (props) =>{
               <div className='modal-pokemon-name'>
                 { props.currentPokemon.name.toUpperCase() }
               </div>
-              <button id={ props.currentPokemon.name + '-' + props.currentPokemon.id } className='compare-button' onClick= { compareToHandler }>Compare to...</button>
+              <button id={ props.currentPokemon.name + '_' + props.currentPokemon.id } className='compare-button' onClick= { compareToHandler }>Compare to...</button>
             </div>
             <div className='out-modal' onClick={ closeHandler }>x</div>
           </div>
