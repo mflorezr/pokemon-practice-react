@@ -74,7 +74,7 @@
 
 .modal-body {
   display: flex;
-  border-bottom: 1px solid var(--border-color) ;
+  border-bottom: 1px solid var(--border-color);
   margin: 1rem;
 }
 
