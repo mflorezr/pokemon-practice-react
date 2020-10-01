@@ -59,7 +59,7 @@ const PokemonList = (props) =>{
       actionToDo(id);
       setIsClicked(false);
     }
-	}, [pokemonFeatures.isFetching, pokemonFeatures.isOtherFetching, isClicked, id, actionToDo]);
+  }, [pokemonFeatures.isFetching, pokemonFeatures.isOtherFetching, isClicked, id, actionToDo]);
 
   const scrollHandler = () => {
     if (Math.ceil(window.innerHeight + document.documentElement.scrollTop) === document.documentElement.offsetHeight) {
