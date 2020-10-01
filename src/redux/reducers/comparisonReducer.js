@@ -5,12 +5,12 @@ const initialState = []
 function comparison (state = initialState, action) {
   switch (action.type) {
     case COMPARE_WITH:
-      return  [
+      return [
         ...state,
         action.payload.id
       ]
       case RESTART:
-      return  []
+      return []
     default:
       return state
   }

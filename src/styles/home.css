@@ -40,19 +40,19 @@
 }
 
 @keyframes changeBackground {
-  0%, 25%{
+  0%, 25% {
     background: url('../images/image1.jpg') center/cover no-repeat;
   }
-  33%, 58%{
+  33%, 58% {
     background: url('../images/image2.jpg') center/cover no-repeat;
   }
-  66%, 91%{
+  66%, 91% { 
     background: url('../images/image3.png') center/cover no-repeat;
   }
 }
 
 .welcome {
-  color: var(--modal-bg) ;
+  color: var(--modal-bg);
   font-size: 2rem;
   font-weight: 800;
   text-align: center;
@@ -60,7 +60,7 @@
 }
 
 .welcome-description {
-  color: var(--modal-bg) ;
+  color: var(--modal-bg);
   font-size: 1rem;
   font-weight: 500;
   padding: 2rem;
@@ -82,12 +82,12 @@
 }
 
 .goto-pokemons:hover {
-  background:var(--modal-bg);
+  background: var(--modal-bg);
   color: var(--button-font-color) ;
-  border: 1px solid  var(--button-font-color)
+  border: 1px solid var(--button-font-color);
 }
 
-@media (min-width:0px) and (max-width:576px){
+@media (min-width:0px) and (max-width:576px) {
   .container-pokemon-title {
     width: 20rem;
   }

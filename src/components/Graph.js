@@ -13,12 +13,12 @@ const Graph = (props) => {
     if (props.comparison.length === 2) {
       stats = props.comparison.map(pokemon => (
         pokemon.stats
-      ))
-      createGraph(ctx, stats)
+      ));
+      createGraph(ctx, stats);
     } else {
       if (props.currentPokemon !== 0) {
-        stats = [props.currentPokemon.stats]
-        createGraph(ctx, stats)
+        stats = [props.currentPokemon.stats];
+        createGraph(ctx, stats);
       }
     }
   }, [props.currentPokemon, props.comparison]);
@@ -27,13 +27,13 @@ const Graph = (props) => {
     if (stats.length === 1) {
       Chart.helpers.each(Chart.instances, function (instance) {
         if (instance.chart.canvas.id === 'chart-mixed') {
-          instance.chart.destroy()
+          instance.chart.destroy();
         }
       })
     }
     const labels = stats[0].map((stat) => (
       stat.stat.name
-    ))
+    ));
     const colors = ['#167a69', '#26b19c'];
     const colorsLength = colors.length;
     const datasets = stats.map((stat, index) => ({
@@ -89,11 +89,11 @@ const Graph = (props) => {
     })
   }
 
-  return(
+  return (
     <div className='modal-chart-mixed' >
       <canvas id='chart-mixed' ref={graphRef} ></canvas>
     </div>
-    )
+  );
 }
 
 export default connect((state) => {

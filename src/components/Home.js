@@ -5,11 +5,11 @@ import title from '../images/title.png'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-  return(
+  return (
     <div className='home'> 
       <div className='backdrop-home'>
         <div className='container-pokemon-title'>
-          <img className = 'pokemon-title-image' src={title} alt=""/>
+          <img className = 'pokemon-title-image' src={title} alt='pokemon-logo'/>
         </div>
         <div className='welcome'> Welcome to Poketionary! </div>
         <p className = 'welcome-description'>
@@ -21,7 +21,7 @@ const Home = () => {
         </Link>
       </div> 
     </div>
-  )
+  );
 }
 
 export default Home 

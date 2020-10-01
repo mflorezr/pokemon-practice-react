@@ -1,7 +1,7 @@
 export const getGender = (genderRate) => {
-  if(genderRate<=4){
-    return 'Male'
+  if (genderRate <= 4) {
+    return 'Male';
   } else {
-    return 'Female'
+    return 'Female';
   }
 }

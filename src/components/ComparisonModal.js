@@ -10,20 +10,37 @@ import ComparisonFeatures from './ComparisonFeatures';
 
 const ComparisonModal = (props) => {
   const [openModal, setOpenModal] = useState(false);
+  const [firstImage, setFirstImage] = useState('');
+  const [secondImage, setSecondImage] = useState('');
 
   useEffect(() => {
     if (props.comparison.length === 2) {
-      setOpenModal(true)
+      setOpenModal(true);
     }
   }, [props.comparison]);
 
+  useEffect(() => {
+    if (props.comparison.length === 2) {
+      setFirstImage(props.pokemonFeatures.features
+        .filter(pokemon => parseInt(pokemon.id) === parseInt(props.comparison[0].id))
+        .map(pokemon => (
+          pokemon.sprites.front_default
+        )));
+      setSecondImage(props.pokemonFeatures.features
+        .filter(pokemon => parseInt(pokemon.id) === parseInt(props.comparison[1].id))
+        .map(pokemon => (
+          pokemon.sprites.front_default
+        )));
+    }
+  }, [props.comparison, props.pokemonFeatures.features]);
+
   const closeHandler = () => {
-    setOpenModal(false)
-    props.restartComparison()
-    props.restartPokemon()
+    setOpenModal(false);
+    props.restartComparison();
+    props.restartPokemon();
   }
 
-  return(
+  return (
     <div className='container'>
       <ComparisonCard />
       <div className={ 'backdrop' + ( openModal ? ' open' : '') } onClick = { closeHandler }></div>
@@ -42,13 +59,13 @@ const ComparisonModal = (props) => {
             <div className='comparison-image-container'>
               <img 
                 className='comparison-image'
-                src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+props.comparison[0].id+'.png'}
+                src={ firstImage }
                 alt="pokemon1"/>
             </div>
             <div className='comparison-image-container'>
               <img 
                 className='comparison-image'
-                src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+props.comparison[1].id+'.png'}
+                src={ secondImage }
                 alt="pokemon2"/>
             </div>
           </div>
@@ -58,7 +75,7 @@ const ComparisonModal = (props) => {
       } 
       </div>
     </div>
-    )
+  );
 }
 
 const mapDispatchToProps = (dispatch) => {

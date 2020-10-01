@@ -9,7 +9,7 @@ import '../styles/main.css'
 import '../styles/pokemonList.css'
 
 const PokemonList = (props) =>{  
-  let srcImage = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+  let srcImage = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
   const [isScrolled, setIsScrolled] = useState(false);
   const [id, setId] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
@@ -24,60 +24,60 @@ const PokemonList = (props) =>{
     fetchFeatures,
     fetchOthers,
     pokemonResults
-  } = props
+  } = props;
 
   useEffect(() => {
-    fetchPokemons(20)
+    fetchPokemons(20);
     window.addEventListener('scroll', scrollHandler);
     return () => {
-      window.removeEventListener( 'scroll', scrollHandler)
+      window.removeEventListener( 'scroll', scrollHandler);
     }
   }, [fetchPokemons]);
 
   useEffect(() => {
-    setPokemonToShow(pokemonResults)
+    setPokemonToShow(pokemonResults);
   }, [pokemonResults]);
 
   useEffect(() => {
     if (isScrolled) {
-      const listSize = pokemonList.pokemons.length
-      fetchPokemons(listSize+20)
-      setIsScrolled(false)
+      const listSize = pokemonList.pokemons.length;
+      fetchPokemons(listSize + 20);
+      setIsScrolled(false);
     }
   }, [fetchPokemons, isScrolled, pokemonList.pokemons]);
   
   const actionToDo = useCallback((cardId) => {
-    const pokemonSelected = pokemonFeatures.features.filter(pokemon => parseInt(pokemon.id)===parseInt(cardId))[0]
+    const pokemonSelected = pokemonFeatures.features.filter(pokemon => parseInt(pokemon.id) === parseInt(cardId))[0];
     if (comparison.length === 1) {
-      compareTo(pokemonSelected)
+      compareTo(pokemonSelected);
     } else {
-      updatePokemon(pokemonSelected)
+      updatePokemon(pokemonSelected);
     } 
   },[compareTo, updatePokemon, comparison.length, pokemonFeatures.features])
   
   useEffect(() => {
     if (!pokemonFeatures.isFetching && !pokemonFeatures.isOtherFetching && isClicked) {
-      actionToDo(id)
-      setIsClicked(false)
+      actionToDo(id);
+      setIsClicked(false);
     }
 	}, [pokemonFeatures.isFetching, pokemonFeatures.isOtherFetching, isClicked, id, actionToDo]);
 
   const scrollHandler = () => {
     if (Math.ceil(window.innerHeight + document.documentElement.scrollTop) === document.documentElement.offsetHeight) {
-      setIsScrolled(true)
+      setIsScrolled(true);
     }
   }
 
   const pokemonClickHandler = (event) => {
-    const pokemonId = event.currentTarget.id
-    setId(pokemonId)
-    let pokemonExists = pokemonFeatures.features.filter(pokemon => parseInt(pokemonId) === parseInt(pokemon.id))
+    const pokemonId = event.currentTarget.id;
+    setId(pokemonId);
+    let pokemonExists = pokemonFeatures.features.filter(pokemon => parseInt(pokemonId) === parseInt(pokemon.id));
     if (pokemonExists.length === 0) { 
-      fetchFeatures(pokemonList.pokemons[pokemonId-1].url)
-      fetchOthers(pokemonId)
-      setIsClicked(true)
+      fetchFeatures(pokemonList.pokemons[pokemonId - 1].url);
+      fetchOthers(pokemonId);
+      setIsClicked(true);
     } else {
-      actionToDo(pokemonId)
+      actionToDo(pokemonId);
     }
   }
 
@@ -88,7 +88,7 @@ const PokemonList = (props) =>{
           <div className='pokemon-image-container'>
             <img className='pokemon-image' 
               src = { 
-                    srcImage + pokemon.url.substring(34, pokemon.url.length - 1) +'.png'
+                    srcImage + pokemon.url.substring(34, pokemon.url.length - 1) + '.png'
                 }  
               alt={pokemon.name}
             />
@@ -99,7 +99,7 @@ const PokemonList = (props) =>{
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 const mapDispatchToProps = (dispatch) => {

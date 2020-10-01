@@ -8,7 +8,7 @@
   opacity: 0;
   position: fixed;
   z-index: 1;
-  background: var(--backdrop-bg) ;
+  background: var(--backdrop-bg);
   width: 100vw;
   height: 100vh;
   justify-content: center;
@@ -20,13 +20,13 @@
   visibility: hidden;
   opacity: 0;
   transform: translateY(-3rem);
-  background-color:var(--modal-bg) ;
+  background-color: var(--modal-bg);
   width: auto;
   position: fixed;
   z-index: 2;
   border-radius: 0.3rem;
   top: 12%;
-  transition: opacity 300ms ease-out, transform 500ms ease-out
+  transition: opacity 300ms ease-out, transform 500ms ease-out;
 }
 
 .open {
@@ -38,7 +38,7 @@
 .modal-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-color) ;
+  border-bottom: 1px solid var(--border-color);
   align-items: center;
   padding: 1rem;
 }
@@ -54,15 +54,15 @@
 }
 
 .compare-button {
-  cursor:  pointer;
+  cursor: pointer;
   margin: 0 0.5rem;
   height: 1.8rem;
   font-size: 0.8rem;
   color: var(--modal-bg);
-  background: var(--button-compare-bg) ;
+  background: var(--button-compare-bg);
   outline: none;
   border-radius: 0.2rem;
-  border:1px solid var(--button-compare-bg) ;
+  border: 1px solid var(--button-compare-bg);
 }
 
 .out-modal {
@@ -73,8 +73,8 @@
 }
 
 .modal-body {
-  display:flex;
-  border-bottom:1px solid var(--border-color) ;
+  display: flex;
+  border-bottom: 1px solid var(--border-color) ;
   margin: 1rem;
 }
 
@@ -89,12 +89,12 @@
 }
 
 .modal-pokemon-details {
-  width:18rem;
+  width: 18rem;
 }
 
 .details-description {
   font-size: var(--desktop-font-size);
-  border-bottom:1px solid var(--border-color) ;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .details-features {
@@ -116,8 +116,8 @@
 }
 
 .feature-value {
-  margin:0.5rem 0;
-  font-size: var(--desktop-font-size) ;
+  margin: 0.5rem 0;
+  font-size: var(--desktop-font-size);
 }
 
 .modal-chart {
@@ -134,7 +134,7 @@
   display: flex;
   margin: 0 2rem;
   column-gap: 5rem;
-  border-bottom:1px solid var(--border-color) ;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .comparison-image-container {
@@ -152,7 +152,7 @@
   text-align: center;
   padding: 1rem 0;
   margin: 0 2rem;
-  border-bottom:1px solid var(--border-color) ;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .comparison-feature-name {
@@ -176,8 +176,7 @@
   align-items: center;
 }
 
-@media (min-width:0px) and (max-width:576px){
-  
+@media (min-width:0px) and (max-width:576px) {
   .modal {
     top: 15%;
   }
@@ -194,7 +193,7 @@
   }
 
   .modal-pokemon-details {
-    width:12rem;
+    width: 12rem;
     max-width: 12rem;
   }
 
@@ -203,7 +202,7 @@
   }
 
   .details-description {
-    font-size:var(--mobile-font-size);
+    font-size: var(--mobile-font-size);
   }
   
   .details-features {
@@ -215,7 +214,7 @@
   }
   
   .feature-value {
-    font-size: var(--mobile-font-size) ;
+    font-size: var(--mobile-font-size);
   }
   
   .modal-comparison-images {

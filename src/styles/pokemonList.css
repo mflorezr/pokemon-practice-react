@@ -9,7 +9,7 @@
 
 .pokemon-card {
   width: 11rem;
-  border: 1px solid var(--border-color) ;
+  border: 1px solid var(--border-color);
   border-radius: 3%;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,6 @@
 
 .pokemon-image-container {
   width: 100%; 
-
 }
 
 .pokemon-image {
@@ -40,13 +39,13 @@
   display: none;
 }
 
-@media (min-width:0px) and (max-width:576px){
+@media (min-width:0px) and (max-width:576px) {
   .pokemon-list {
     padding: 1rem 4rem;
   }
 }
 
-@media (min-width:576px)and (max-width:768px){
+@media (min-width:576px) and (max-width:768px) {
   .pokemon-list {
     padding: 1rem 5rem;
   }
