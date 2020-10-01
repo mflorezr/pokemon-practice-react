@@ -5,10 +5,10 @@ import '../styles/main.css'
 import '../styles/modal.css';
 
 const Graph = (props) => {
-  const graphRef = useRef()
+  const graphRef = useRef();
 
   useEffect(() => {
-    let stats = 0
+    let stats = 0;
     const ctx = graphRef.current.getContext('2d');
     if (props.comparison.length === 2) {
       stats = props.comparison.map(pokemon => (
@@ -41,7 +41,7 @@ const Graph = (props) => {
         stat.base_stat
       )),
       backgroundColor: colors[index % colorsLength]
-    }))
+    }));
     new Chart(ctx, {
       type: 'bar',
       responsive: true,
@@ -86,7 +86,7 @@ const Graph = (props) => {
           }]
         }
       }
-    })
+    });
   }
 
   return (
