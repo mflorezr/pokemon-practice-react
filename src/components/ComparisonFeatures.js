@@ -14,12 +14,12 @@ const ComparisonFeatures = (props) => {
         .filter(pokemon => parseInt(pokemon.id) === parseInt(props.comparison[0].id))
         .map(pokemon => (
           getGender(pokemon.gender_rate)
-        )))
+        )));
       setGenderTwo(props.pokemonFeatures.otherFeatures
         .filter(pokemon => parseInt(pokemon.id) === parseInt(props.comparison[1].id))
         .map(pokemon => (
           getGender(pokemon.gender_rate)
-        )))
+        )));
     }
   }, [props.comparison, props.pokemonFeatures]);
 
