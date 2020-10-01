@@ -23,7 +23,7 @@ const NavBar = (props) => {
     lookFor(results);
   }
   
-  return(
+  return (
     <div className='nav-bar'>
       <div className='main-nav'>
         <Link to ='/' style={{ textDecoration: 'none' }}>

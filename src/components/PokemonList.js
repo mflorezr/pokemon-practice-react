@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback} from 'react'
 import { connect } from 'react-redux'
 import { fetchPokemons } from '../redux/actions/pokemonListAction'
@@ -53,7 +52,7 @@ const PokemonList = (props) =>{
     } else {
       updatePokemon(pokemonSelected);
     } 
-  },[compareTo, updatePokemon, comparison.length, pokemonFeatures.features])
+  }, [compareTo, updatePokemon, comparison.length, pokemonFeatures.features])
   
   useEffect(() => {
     if (!pokemonFeatures.isFetching && !pokemonFeatures.isOtherFetching && isClicked) {
@@ -81,7 +80,7 @@ const PokemonList = (props) =>{
     }
   }
 
-  return(
+  return (
     <div className = 'pokemon-list' onScroll={scrollHandler}>
       {pokemonToShow.map((pokemon) => (
         <div id={pokemon.url.substring(34, pokemon.url.length - 1)} className='pokemon-card' key={pokemon.url} onClick={pokemonClickHandler}>

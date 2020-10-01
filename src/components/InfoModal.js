@@ -28,7 +28,7 @@ const InfoModal = (props) =>{
     props.restartPokemon();
   }
 
-  return(
+  return (
     <div className='container'>
       <div className={'backdrop' + (openModal ? ' open' : '')} onClick={ closeHandler }></div>
       <div className={'modal' + (openModal ? ' open' : '') } >
