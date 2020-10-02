@@ -1,0 +1,64 @@
+.comparison-card {
+  visibility: hidden;
+  opacity: 0;
+  background: var(--modal-bg);
+  position: fixed;
+  right: 1.5rem;
+  top: 10%;
+  border: 1px solid var(--border-color);
+  border-radius: 0.2rem;
+  box-shadow: 0 2px 5px 1px var(--box-shadow-border);
+  transition: opacity 1000ms ease-out;
+}
+
+.open-comparison {
+   visibility: visible;
+   opacity: 1;
+}
+
+.comparison-header {
+  font-size: var(--comparison-desktop-font-size);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--title-comparison-color);
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.comparison-item {
+  padding: 0.6rem 0.5rem;
+  font-size: var(--comparison-desktop-font-size);
+  font-weight: 600;
+}
+
+@media (min-width:0px) and (max-width:576px) {
+  .comparison-card {
+    right: var(--comparison-mobile-font-size);
+  }
+
+  .comparison-header {
+    font-size: var(--comparison-mobile-font-size);
+    width: 5rem;
+  }
+
+  .comparison-item {
+    font-size: var(--comparison-mobile-font-size);
+  }
+}
+
+@media (min-width:576px) and (max-width:768px) {
+  .comparison-card {
+    right: 1rem;
+  }
+  
+  .comparison-header {
+    font-size: var(--mobile-font-size);
+    width: 7rem;
+  }
+
+  .comparison-item {
+    font-size: var(--mobile-font-size);
+  }
+}

@@ -1,0 +1,94 @@
+.home {
+  background: url('../images/image1.jpg') center/cover no-repeat;
+  width: 100vw;
+  height: 100vh;
+  animation: changeBackground 15s infinite ease-out;
+}
+
+.container-pokemon-title {
+  width: 30rem;
+}
+
+.pokemon-title-image {
+  width: 100%;
+}
+
+.pokemon-title-image:hover {
+  animation: wiggle 400ms 3s 8 ease-out;
+}
+
+.backdrop-home {
+  background: var(--backdrop-bg);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotateZ(0);
+  }
+  50% {
+    transform: rotateZ(-10deg);
+  }
+  100% {
+    transform: rotateZ(10deg);
+  }
+}
+
+@keyframes changeBackground {
+  0%, 25% {
+    background: url('../images/image1.jpg') center/cover no-repeat;
+  }
+  33%, 58% {
+    background: url('../images/image2.jpg') center/cover no-repeat;
+  }
+  66%, 91% { 
+    background: url('../images/image3.png') center/cover no-repeat;
+  }
+}
+
+.welcome {
+  color: var(--modal-bg);
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  padding: 1rem;
+}
+
+.welcome-description {
+  color: var(--modal-bg);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 2rem;
+  text-align: center;
+}
+
+.goto-pokemons { 
+  width: 15rem;
+  height: 3rem;
+  background-color: transparent;
+  border: 1px solid var(--modal-bg);
+  border-radius: 2rem;
+  font-size: 1rem;
+  color: var(--modal-bg);
+  cursor: pointer;
+  outline: none;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.goto-pokemons:hover {
+  background: var(--modal-bg);
+  color: var(--button-font-color) ;
+  border: 1px solid var(--button-font-color);
+}
+
+@media (min-width:0px) and (max-width:576px) {
+  .container-pokemon-title {
+    width: 20rem;
+  }
+}
